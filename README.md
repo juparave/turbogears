@@ -11,7 +11,6 @@ ref [Stackoverflow](https://stackoverflow.com/questions/13387516/authorization-h
     # this can go in either server config, virtual host, directory or .htaccess 
     WSGIPassAuthorization On
 
-<<<<<<< HEAD
 ## Log with full stack
 
 ref [Stackoverflow](https://stackoverflow.com/questions/1508467/log-exception-with-traceback)
@@ -33,17 +32,15 @@ def gettoken(headers):
         token = None
     return token
 ```
-=======
 
-### Generate SSL
+## Generate SSL
 
 ### Generate a Key Pair
  
     $ openssl genrsa -out cesarfer.com.key 2048
 
-#### Generate the CSR
+### Generate the CSR
 
     $ openssl req -new -key cesarfer.com.key -out cesarfer.com.csr 
 
 **NOTE**: Please do not enter your email address, challenge password or an optional company name when generating the CSR.
->>>>>>> Adding generating CSR for SSL certificate
