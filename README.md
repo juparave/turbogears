@@ -44,3 +44,4 @@ def gettoken(headers):
     $ openssl req -new -key cesarfer.com.key -out cesarfer.com.csr 
 
 **NOTE**: Please do not enter your email address, challenge password or an optional company name when generating the CSR.
+[Check CSR](https://ssltools.digicert.com/checker/views/csrCheck.jsp)
