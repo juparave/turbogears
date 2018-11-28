@@ -120,3 +120,19 @@ class User(DeclarativeBase):
     
     # }
 ```
+
+## Sorting ordering
+
+Ordering by created date descending
+
+```python
+    @classmethod
+    def get_all(cls, inspection_type=None):
+        """ Return all objects """
+
+        if inspection_type:
+            return DBSession.query(cls).filter(cls.inspection_type == inspection_type).all()
+
+        return DBSession.query(cls).order_by(cls.created.desc()).all()
+
+```
