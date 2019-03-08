@@ -1,5 +1,19 @@
 # SQLAlchemy
 
+## MySQL and Python 3
+
+Prefered dependency:
+
+    install_requires = [
+    ...
+    "pymysql"
+    ]
+
+Connector
+```
+sqlalchemy.url = mysql+pymysql://masterits:masteritspass01@localhost/masterits?charset=utf8mb4
+```
+
 ## Relationship Joins
 
 ### Using foreign_keys

@@ -7,19 +7,6 @@
     $ virtualenv -p python3 --no-site-packages tg2.4env
     $ source ~/bin/hg-prompt && source ~/workspace/python/{PROJECT_NAME}/tg2.4env/bin/activate
 
-## MySQL and Python 3
-
-Prefered dependency:
-
-    install_requires = [
-    ...
-    "pymysql"
-    ]
-
-```
-sqlalchemy.url = mysql+pymysql://masterits:masteritspass01@localhost/masterits?charset=utf8mb4
-```
-
 ## Deployment Configuration 
 
 ### Authorization header missing
