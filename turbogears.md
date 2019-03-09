@@ -13,8 +13,12 @@
 
     # create Virtual Environment option 2
     $ virtualenv -p python3 --no-site-packages tg2.4env
-    
+
     $ source ~/bin/hg-prompt && source ~/workspace/python/{PROJECT_NAME}/tg2.4env/bin/activate
+
+### Quickstart with Genshi
+
+    $ gearbox quickstart --genshi --skip-default-template PROJECT_NAME
 
 ## Deployment Configuration 
 
