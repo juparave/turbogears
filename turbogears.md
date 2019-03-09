@@ -4,7 +4,16 @@
 
 ### TG 2.4 with Python 3
 
+    $ brew update
+    $ brew doctor
+    $ brew install python3
+
+    # create Virtual Environment option 1
+    $ python3 -m venv tg2.4env
+
+    # create Virtual Environment option 2
     $ virtualenv -p python3 --no-site-packages tg2.4env
+    
     $ source ~/bin/hg-prompt && source ~/workspace/python/{PROJECT_NAME}/tg2.4env/bin/activate
 
 ## Deployment Configuration 
