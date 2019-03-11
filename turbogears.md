@@ -16,6 +16,9 @@
 
     $ source ~/bin/hg-prompt && source ~/workspace/python/{PROJECT_NAME}/tg2.4env/bin/activate
 
+    # --pre latest TG version 
+    $ pip install --pre tg.devtools
+
 ### Quickstart with Genshi
 
     $ gearbox quickstart --genshi --skip-default-template PROJECT_NAME
