@@ -117,3 +117,15 @@ def setup_schema(command, conf, vars):
     alembic.command.stamp(alembic_cfg, "head")
 
 ```
+
+## Troubleshooting
+
+    dyld: Library not loaded: @executable_path/../.Python
+    Referenced from: /Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6
+    Reason: image not found
+    Abort trap: 6
+
+Something happend to python interpreter, maybe after install python3
+
+ref [Matt Andeerson](https://mattbanderson.com/so-you-hosed-your-mac-os-python-install/)
+ref [Stackoverflow](https://stackoverflow.com/questions/31768128/pip-installation-usr-local-opt-python-bin-python2-7-bad-interpreter-no-such-f)
