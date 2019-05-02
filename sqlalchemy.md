@@ -150,3 +150,29 @@ Ordering by created date descending
         return DBSession.query(cls).order_by(cls.created.desc()).all()
 
 ```
+
+### Using aliased
+
+```python
+    # aliases
+    assigned_user = aliased(model.User)
+    identified_by_user = aliased(model.User)
+    # defining columns
+    columns = [ColumnDT(model.Issue.uid, 'uid'),
+                ColumnDT(model.IssueStatus.name, 'current_status'),
+                ColumnDT(identified_by_user.display_name, 'identified_by'),
+                ColumnDT(assigned_user.display_name, 'assigned_to'),
+                ColumnDT(model.Issue.priority, 'priority'),
+                ColumnDT(model.Issue.summary, 'summary'),
+                ColumnDT(model.Issue.issue_date, 'issue_date'),
+                ColumnDT(model.Issue.target_resolution_date, 'target_resolution_date'),
+                ColumnDT(model.Department.name, 'department_name'),
+                ColumnDT(model.Department.name, 'department_name'),
+                ]
+
+    query = model.DBSession.query(model.Issue)\
+        .join(model.Issue.department)\
+        .join(identified_by_user, identified_by_user.user_id == model.Issue.identified_by_id, isouter=True)\
+        .join(assigned_user, assigned_user.user_id == model.Issue.assigned_to_id, isouter=True)\
+        .join(model.Issue.current_status, isouter=True)
+```
