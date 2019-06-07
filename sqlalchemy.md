@@ -176,3 +176,54 @@ Ordering by created date descending
         .join(assigned_user, assigned_user.user_id == model.Issue.assigned_to_id, isouter=True)\
         .join(model.Issue.current_status, isouter=True)
 ```
+
+### Using Text
+
+```python    
+    @classmethod
+    def get_weekly_stats(cls, user=None):
+        """Return Issue stats by issue current status"""
+
+        last_week_query = text("""
+        SELECT sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 0 THEN 1 ELSE 0 END) AS `Domingo`,
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 1 THEN 1 ELSE 0 END) AS `Lunes`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 2 THEN 1 ELSE 0 END) AS `Martes`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 3 THEN 1 ELSE 0 END) AS `Miercoles`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 4 THEN 1 ELSE 0 END) AS `Jueves`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 5 THEN 1 ELSE 0 END) AS `Viernes`,
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 0 THEN 1 ELSE 0 END) AS `Sabado`
+               from tg_issue 
+               WHERE YEARWEEK(tg_issue.issue_date) = YEARWEEK(NOW() - INTERVAL 1 WEEK)""")
+
+        last_week_stats = DBSession.execute(last_week_query).first()
+
+        this_week_query = text("""
+        SELECT sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 0 THEN 1 ELSE 0 END) AS `Domingo`,
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 1 THEN 1 ELSE 0 END) AS `Lunes`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 2 THEN 1 ELSE 0 END) AS `Martes`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 3 THEN 1 ELSE 0 END) AS `Miercoles`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 4 THEN 1 ELSE 0 END) AS `Jueves`, 
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 5 THEN 1 ELSE 0 END) AS `Viernes`,
+               sum(CASE WHEN WEEKDAY(tg_issue.issue_date) = 0 THEN 1 ELSE 0 END) AS `Sabado` 
+               from tg_issue 
+               WHERE YEARWEEK(tg_issue.issue_date) = YEARWEEK(NOW())""")
+
+        this_week_stats = DBSession.execute(this_week_query).first()
+
+        stats = {
+            'last_week_stats': last_week_stats,
+            'this_week_stats': this_week_stats
+        }
+
+        return stats
+```
+
+Auto calculate ceil
+
+```python
+    import math
+    max_issues = math.ceil(
+        max(
+            max(weekly_stats['this_week_stats']),
+            max(weekly_stats['last_week_stats']) / 5 )) * 5
+```
