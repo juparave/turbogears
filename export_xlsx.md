@@ -40,7 +40,7 @@ def export(self, **kw):
     xlsx_file = export_xlsx(column_names, results)
 
     response.headers["Content-Type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    response.headers["Content-disposition"] = "attachment; filename=export_cesarfer.com.xlsx"
+    response.headers["Content-disposition"] = "attachment; filename=export.xlsx"
     response.headers["Content-Length"] = str(len(xlsx_file))
     
     return xlsx_file
