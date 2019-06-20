@@ -1,6 +1,6 @@
 [Turbogears](turbogears.html)
 [SQLAlchemy](sqlalchemy.html)
-
+[Export data in xlsx format](export_xlsx.html)
 ## PreMailer
 
 Useful tool to send formated emails
