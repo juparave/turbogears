@@ -133,7 +133,7 @@ Find and edit the line of the project package, e.g.:
     -e /Users/pablito/workspace/python/BikeJack/tg2.4env/src/bikejack/BikeJack
     ...
 
-Remove it or replace it with repo reference
+Remove it or replace it with repo reference, ref https://pip.pypa.io/en/stable/reference/pip_install/#vcs-support
 
     ...
     -e "hg+ssh://hg@bitbucket.org/juparave/bikejackserver#egg=bikejack&subdirectory=BikeJack"
