@@ -118,6 +118,28 @@ def setup_schema(command, conf, vars):
 
 ```
 
+## Handling project dependencies
+
+It's a good idea to freeze dependencies on development, this way when we deploy the projecto to a production server we won't have problems.
+
+Create requirements.txt
+
+    $ pip freeze > requirements.txt
+
+Find and edit the line of the project package, e.g.:
+
+    ...
+    # Editable install with no version control (BikeJack==0.1)
+    -e /Users/pablito/workspace/python/BikeJack/tg2.4env/src/bikejack/BikeJack
+    ...
+
+Remove it or replace it with repo reference
+
+    ...
+    -e "hg+ssh://hg@bitbucket.org/juparave/bikejackserver#egg=bikejack&subdirectory=BikeJack"
+    ...
+
+
 ## Troubleshooting
 
     dyld: Library not loaded: @executable_path/../.Python
