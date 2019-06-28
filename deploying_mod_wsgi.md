@@ -1,3 +1,5 @@
+[Index](index.html)
+
 # Deploying Turbogears app using apache mod_wsgi
 
 ## .conf file

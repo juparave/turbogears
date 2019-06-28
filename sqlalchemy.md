@@ -1,3 +1,5 @@
+[Index](index.html)
+
 # SQLAlchemy
 
 ## MySQL and Python 3
