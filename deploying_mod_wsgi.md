@@ -85,8 +85,9 @@ application = loadapp('config:%s' % APP_CONFIG)
 
 ## Troubleshooting
 
-Sometimes is required to install paste and pastedeploy packages
+Sometimes is required to install paste and pastedeploy packages in the virtual environment
 
 ```bash
+    (env)
     $ pip install paste pastedeploy
 ```
