@@ -164,7 +164,7 @@ Solution:
 
 To avoid server overload, limit crawlers access
 
-    crawlers_user_agents.py
+crawlers_user_agents.py
 ```python
 # -*- coding: utf-8 -*-
 from tg import abort
@@ -210,7 +210,6 @@ def process_request(request):
 ```
 
 Inside controllers
-
 ```python
 from tg.decorators import before_validate
 
