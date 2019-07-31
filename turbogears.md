@@ -160,3 +160,84 @@ Solution:
 
     $ ln -s /usr/local/bin/python /usr/local/opt/python/bin/python2.7
 
+## Handling crawlers
+
+To avoid server overload, limit crawlers access
+
+    crawlers_user_agents.py
+```python
+# -*- coding: utf-8 -*-
+from tg import abort
+
+crawlers = ['AdsBot-Google',
+            'AppEngine-Google',
+            'bitlybot',
+            'DF Bot',
+            'facebookexternalhit',
+            'Go-http-client',
+            'Google-Ads-Creatives-Assistant',
+            'Google-Ads-Overview',
+            'Googlebot',
+            'AhrefsBot',
+            'Baiduspider',
+            'bingbot',
+            'coccocbot-web',
+            'Dataprovider.com',
+            'DotBot',
+            'DuckDuckBot',
+            'Exabot',
+            'MJ12bot',
+            'Pinterestbot',
+            'SemrushBot',
+            'spider',
+            'VelenPublicWebCrawler',
+            'YandexBot',
+            'weborama-fetcher',
+            'ZoominfoBot']
+
+
+def process_request(request):
+    try:
+        # get first occurrence
+        crawler = next((s for s in crawlers if s.lower() in request.user_agent.lower()), None)
+    except AttributeError as ex:
+        # in case of exception, pass
+        crawler = None
+    if crawler:
+        # HTTPUnauthorized
+        abort(401)
+
+```
+
+Inside controllers
+
+```python
+from tg.decorators import before_validate
+
+from mastershop.controllers.crawlers_user_agents import process_request
+
+class CartController(BaseController):
+    # Uncomment this line if your controller requires an authenticated user
+    # allow_only = authorize.not_anonymous()
+
+    def __init__(self, i18n='es'):
+        self.i18n = i18n
+
+    @before_validate
+    def crawler_blocker(remainder, params):
+        """Decorator that blocks certain user agents, mostly web crawlers, search bots"""
+        process_request(request)
+.
+.
+.
+    @crawler_blocker
+    @expose()
+    def add(self, pid, **kw):
+        """ Add product to cart """
+        package = True if 'package' in kw else False
+        product = model.Product.getBy_id(pid)
+.
+.
+.
+
+```
