@@ -25,6 +25,40 @@
 
     $ gearbox quickstart --genshi --skip-default-template PROJECT_NAME
 
+### Flash template
+
+On config/app_cfg.py
+
+Using AppConfig
+
+```python
+# my flash template
+from string import Template
+base_config['flash.default_status'] = 'info'
+base_config['flash.template'] = Template(u"""<div class="alert ${container_id} alert-${status} fade in">
+                            <button type="button" class="close" data-dismiss="alert">
+                              <span aria-hidden="true">×</span>
+                              <span class="sr-only">Cerrar</span>
+                            </button>
+                            ${message}
+                        </div>""")
+```
+
+Using FullStackApplicationConfigurator
+
+```python
+from string import Template
+base_config.update_blueprint({
+    'flash.default_status': 'info',
+    'flash.template': Template(u"""<div class="alert alert-dismissible fade show ${container_id} alert-${status}" role="alert">
+                            ${message}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>""")
+})
+```
+
 ## Deployment Configuration 
 
 ### Authorization header missing
