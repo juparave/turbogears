@@ -9,3 +9,12 @@ Useful tool to send formated emails
 
 [Github](https://github.com/peterbe/premailer)
 [premailer.io](https://premailer.io/)
+
+## iPython
+
+# Using global variables
+
+```python
+ipy = get_ipython()
+setattr(ipy.__class__, 'user_global_ns', property(lambda self: self.user_ns))
+```
