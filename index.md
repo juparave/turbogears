@@ -12,7 +12,7 @@ Useful tool to send formated emails
 
 ## iPython
 
-# Using global variables
+### Using global variables
 
 ```python
 ipy = get_ipython()
