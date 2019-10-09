@@ -54,3 +54,20 @@ On line 8 we specify a require permission to access controller member _only_for_
 ```
 On line 4 we ask if the user has _view_costs_ permission to view a cost column
 
+## request.identity members
+
+| Member | Value |
+| ------ | ----- |
+| request.identity['tokens'] | |
+| request.identity['userdata'] | |
+| request.identity['repoze.who.userid'] | _current user's user_name_ |
+| request.identity['timestamp'] | |
+| request.identity['repoze.who.plugins.auth_tkt.userid'] | |
+| request.identity['authenticator'] | |
+| request.identity['user'] | _user object_ |
+| request.identity['groups'] | _group's name array_ |
+| request.identity['repoze.what.userid'] | |
+| request.identity['identifier'] | |
+| request.identity['permissions'] | _permission's name array_ |
+
+
