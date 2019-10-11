@@ -2,6 +2,32 @@
 
 # SQLAlchemy
 
+## MySQL v8
+
+### datatables.py
+
+CompileError: Can't resolve label reference for ORDER BY / GROUP BY. Textual SQL expression 'product.catalog' should be explicitly declared as text('product.catalog')
+
+```diff
+@@ -364,7 +364,7 @@ class DataTables:
+                 else:
+                     tablename = self.sqla_object.__table__.name
+
+-            sort_name = "%s.%s" % (tablename, sort_name)
++            sort_name = text("%s.%s" % (tablename, sort_name))
+             self.query = self.query.order_by(
+                 asc(sort_name) if sort.dir == 'asc' else desc(sort_name))
+
+```
+
+### Incompatible with sql_mode=only_full_group_by
+
+Modify my.cnf with following content
+
+/usr/local/etc/my.cnf
+
+    sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+
 ## MySQL and Python 3
 
 Prefered dependency:
