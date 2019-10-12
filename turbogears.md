@@ -188,11 +188,25 @@ Something happend to python interpreter, maybe after install python3
 ref [Matt Andeerson](https://mattbanderson.com/so-you-hosed-your-mac-os-python-install/)
 ref [Stackoverflow](https://stackoverflow.com/questions/31768128/pip-installation-usr-local-opt-python-bin-python2-7-bad-interpreter-no-such-f)
 
-Solution:
+Solution 1:
 
     Only solution in OSX and its variant.
 
     $ ln -s /usr/local/bin/python /usr/local/opt/python/bin/python2.7
+    
+Solution 2:
+
+Remove symlinks
+
+    $ find tg2.4env -type l -delete
+    
+Recreate symlinks
+
+    $ # python 2.7
+    $ virtualenv --no-site-packages tg2.4env
+    
+    $ # python >3
+    $ python3 -m venv tg2.4env
 
 ## Handling crawlers
 
