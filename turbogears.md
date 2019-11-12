@@ -208,6 +208,31 @@ Recreate symlinks
     $ # python >3
     $ python3 -m venv tg2.4env
 
+### SQLAlchemy requirements and implementation, ZopeTransactionExtension
+
+With SQLAlchemy==1.3.11 and zope.sqlalchemy==1.2 we have to modify `model/__init__.py`
+
+```diff
+--- a/webstore/model/__init__.py
++++ b/webstore/model/__init__.py
+@@ -1,15 +1,15 @@
+ # -*- coding: utf-8 -*-
+ """The application's model objects"""
+
+-from zope.sqlalchemy import ZopeTransactionExtension
++from zope.sqlalchemy import register
+ from sqlalchemy.orm import scoped_session, sessionmaker
+ from sqlalchemy.ext.declarative import declarative_base
+
+ # Global session manager: DBSession() returns the Thread-local
+ # session object appropriate for the current web request.
+-maker = sessionmaker(autoflush=True, autocommit=False,
+-                     extension=ZopeTransactionExtension())
++maker = sessionmaker(autoflush=True, autocommit=False)
+ DBSession = scoped_session(maker)
++register(DBSession)
+```
+
 ## Handling crawlers
 
 To avoid server overload, limit crawlers access
