@@ -233,6 +233,19 @@ With SQLAlchemy==1.3.11 and zope.sqlalchemy==1.2 we have to modify `model/__init
 +register(DBSession)
 ```
 
+### Installing dependencies from requirements file
+
+    $ pip install -r requirements.txt
+
+Install exactly library dependencies and versions
+
+    $ cat requirements.txt | xargs -n 1 pip install
+    
+To ignore comments (lines starting with a #) and blank lines, use:
+
+    $ cat requirements.txt | cut -f1 -d"#" | sed '/^\s*$/d' | xargs -n 1 pip install
+    
+
 ## Handling crawlers
 
 To avoid server overload, limit crawlers access
