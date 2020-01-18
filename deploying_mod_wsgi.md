@@ -56,8 +56,8 @@ Add to the VirtualHost conf part
 ```conf
     # custom timeout for photo uploads from mobile app
     # Wait max 20 seconds for the first byte of the request line+headers
-	# From then, require a minimum data rate of 500 bytes/s, but don't
-	# wait longer than 40 seconds in total.
+    # From then, require a minimum data rate of 500 bytes/s, but don't
+    # wait longer than 40 seconds in total.
     RequestReadTimeout header=20-40,minrate=500
     # Wait max 40 seconds for the first byte of the request body (if any)
     # From then, require a minimum data rate of 500 bytes/s
