@@ -50,6 +50,20 @@ Used on /etc/apache/sites-available
 
 * important to add *python-home* on *WGSIDaemonProcess*
 
+If application has to upload files on poor conections is good practice to allow a longer timeout for it.
+Add to the VirtualHost conf part 
+
+```conf
+    # custom timeout for photo uploads from mobile app
+    # Wait max 20 seconds for the first byte of the request line+headers
+	# From then, require a minimum data rate of 500 bytes/s, but don't
+	# wait longer than 40 seconds in total.
+    RequestReadTimeout header=20-40,minrate=500
+    # Wait max 40 seconds for the first byte of the request body (if any)
+    # From then, require a minimum data rate of 500 bytes/s
+    RequestReadTimeout body=40,minrate=500
+```
+
 ## .wsgi file
 
 Used on project apache directory. My own practice
