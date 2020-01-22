@@ -32,10 +32,12 @@ Modify my.cnf with following content
 
 Prefered dependency:
 
-    install_requires = [
-    ...
+```python
+install_requires = [
+...
     "pymysql"
-    ]
+]
+```
 
 Connector
 ```
