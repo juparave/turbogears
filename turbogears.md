@@ -245,6 +245,25 @@ To ignore comments (lines starting with a #) and blank lines, use:
 
     $ cat requirements.txt | cut -f1 -d"#" | sed '/^\s*$/d' | xargs -n 1 pip install
     
+### M2Crypto
+
+Dependencies
+
+    $ brew install openssl && brew install swig
+    
+If already installed, reinstall them, just in case =)
+
+    $ brew reinstall openssl@1.1
+    $ brew reinstall swig
+
+Install M2Crypto
+
+    $ brew --prefix openssl
+    /usr/local/opt/openssl
+    $ LDFLAGS="-L$(brew --prefix openssl)/lib" \
+      CFLAGS="-I$(brew --prefix openssl)/include" \
+      SWIG_FEATURES="-I$(brew --prefix openssl)/include" \
+      pip install m2crypto --no-binary :all:
 
 ## Handling crawlers
 
