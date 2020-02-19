@@ -111,30 +111,39 @@ To have the chance to erase tables
 
 ```python
 # -*- coding: utf-8 -*-
-"""Setup the FortanBiz application"""
+"""Setup the [model] application"""
 from __future__ import print_function
 
 import sys
+
 from tg import config
 import transaction
 
+# to avoid error on python 2
+if sys.version_info.major == 3:
+    pass
+elif sys.version_info.major == 2:
+    try:
+        input = raw_input
+    except NameError:
+        pass
+else:
+    print("Unknown python version - input function not safe")
+
 
 def setup_schema(command, conf, vars):
-    """Place any commands to setup fortanbiz here"""
+    """Place any commands to setup cesarferpromotores here"""
     # Load the models
 
     # <websetup.websetup.schema.before.model.import>
-    from fortanbiz import model
+    from cesarferpromotores import model
     # <websetup.websetup.schema.after.model.import>
 
-    # Destroy previous databases
+    # Destroy previous database
     if 'nose' not in sys.modules:
->>> python > 3
-        confirm = input("Destroy actual database? ([yes]/no) ")
->>> python == 2.7
-        confirm = raw_input("Destroy actual database? ([yes]/no) ")
+        confirm = input("Destroy actual database? (yes/no) ")
         if confirm == "yes" or confirm == "":
-            print("Destroying previous databases")
+            print("Destroying previous database")
             model.metadata.drop_all(bind=config['tg.app_globals'].sa_engine)
         else:
             print("Keeping database...")
@@ -151,7 +160,6 @@ def setup_schema(command, conf, vars):
     alembic_cfg.set_main_option("sqlalchemy.url", config['sqlalchemy.url'])
     import alembic.command
     alembic.command.stamp(alembic_cfg, "head")
-
 ```
 
 ## Handling project dependencies
