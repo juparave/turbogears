@@ -49,5 +49,25 @@ I prefer using `aptitude`
     # apt-get install aptitude
     # aptitude update
     # aptitude safe-upgrade
+
+### Install Nginx web server
+
+    # aptitude install nginx
     
+Auto start Nginx when Ubuntu is booted
+
+    # systemctl enable nginx
+
+Start Nginx with:
+
+    # systemctl start nginx
     
+Check status
+
+    # systemctl status nginx
+
+Verify that `/usr/share/nginx/html` belongs to `www-data` (Nginx user) as the owner of web directory. By default it’s owned by the root user.
+
+    # chown www-data:www-data /usr/share/nginx/html -R
+    
+
