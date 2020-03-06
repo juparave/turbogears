@@ -2,6 +2,27 @@
 
 # SQLAlchemy
 
+#### Connection uri
+
+    connect_string = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format(DB_USER, DB_PASS, DB_HOST, DB_PORT, DATABASE)
+    
+On table definitions e.g.
+
+```python
+class Tags(DeclarativeBase):
+    """
+    Para relacionar los productos se usarán tags
+    """
+    __tablename__ = 'tags'
+    __table_args__ = {'mysql_engine': 'MyISAM', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_general_ci'}
+
+    id = Column(u'id', Integer, primary_key=True, nullable=False)
+
+    name = Column(u'name', Unicode(254), index=True)
+```
+
+
+
 ## MySQL v8
 
 ### datatables.py
