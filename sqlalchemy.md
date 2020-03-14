@@ -72,7 +72,7 @@ sqlalchemy.url = mysql+pymysql://masterits:masteritspass01@localhost/masterits?c
 ```python
 class Account(DeclarativeBase):
     __tablename__ = 'account'
-    __table_args__ = {'mysql_engine': 'MyISAM', 'mysql_charset': 'utf8'}
+    __table_args__ = {'mysql_engine': 'MyISAM', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_general_ci'}
 
     # { Columns
 
@@ -125,7 +125,7 @@ class User(DeclarativeBase):
 
     """
     __tablename__ = 'ch_user'
-    __table_args__ = {'mysql_engine': 'MyISAM', 'mysql_charset': 'utf8'}
+    __table_args__ = {'mysql_engine': 'MyISAM', 'mysql_charset': 'utf8mb4', 'mysql_collate': 'utf8mb4_general_ci'}
 
     # Columns {
 
