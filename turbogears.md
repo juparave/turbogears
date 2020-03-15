@@ -272,6 +272,25 @@ Install M2Crypto
       CFLAGS="-I$(brew --prefix openssl)/include" \
       SWIG_FEATURES="-I$(brew --prefix openssl)/include" \
       pip install m2crypto --no-binary :all:
+      
+### Marrow Mailer with Python 3
+
+There is an error generated when using Python 3 SMTP library
+
+`ValueError: server_hostname cannot be an empty string or start with a leading dot.`
+
+Monkey-patch this method:
+
+`marrow.mailer.transport.smtp.SMTPTransport.connect_to_server()`
+
+```python
+    def connect_to_server(self):
+        if self.tls == 'ssl': # pragma: no cover
+            connection = SMTP_SSL(host=self.host, local_hostname=self.local_hostname, keyfile=self.keyfile,
+                                  certfile=self.certfile, timeout=self.timeout)
+        else:
+            connection = SMTP(host=self.host, local_hostname=self.local_hostname, timeout=self.timeout)
+```
 
 ## Handling crawlers
 
