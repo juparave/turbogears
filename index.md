@@ -3,6 +3,7 @@
 * [Deploying mod_wsgi](deploying_mod_wsgi.html)
 * [Export data in xlsx format](export_xlsx.html)
 * [Authorization](authorization.html)
+* [SSL Certificates](ssl_certificate.html)
 
 ## PreMailer
 
