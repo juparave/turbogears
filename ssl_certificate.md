@@ -36,16 +36,16 @@ NOTE: Please do not enter your email address, challenge password or an optional 
     Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
     Header always set X-Frame-Options DENY
     Header always set X-Content-Type-Options nosniff
-    SSLCertificateFile /etc/apache2/ssl/olinspections.com.ee.crt
+    SSLCertificateFile /etc/apache2/ssl/olinspections.com.crt
     SSLCertificateKeyFile /etc/apache2/ssl/olinspections.com.key
-    SSLCACertificateFile /etc/apache2/ssl/olinspections.com.apache.crt
+    SSLCACertificateFile /etc/apache2/ssl/olinspections.com.ca.crt
     
 ### Nginx
 
     server {
 		listen 443;
 		ssl			on;
-		ssl_certificate		/etc/nginx/ssl/olinspections.com.nginx.crt;
+		ssl_certificate		/etc/nginx/ssl/olinspections.com.crt;
 		ssl_certificate_key	/etc/nginx/ssl/olinspections.com.key;
 
 		root /home/cesarfer/www;
