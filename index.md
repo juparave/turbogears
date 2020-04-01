@@ -4,6 +4,7 @@
 * [Export data in xlsx format](export_xlsx.html)
 * [Authorization](authorization.html)
 * [SSL Certificates](ssl_certificate.html)
+* [Python 3](python_3.html)
 
 ## PreMailer
 
