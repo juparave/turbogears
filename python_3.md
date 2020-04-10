@@ -1,5 +1,17 @@
 # Python 3 notes
 
+## Create environment
+
+Create an evironment inside root repository directory, e.g. `workspace/pyth9on/Chofero`
+
+    $ python3 -m venv tg2.4.3env
+    $ source tg2.3.4env/bin/activate
+    $ pip install --upgrade pip
+    $ pip install tg.devtools
+    $ cd Chofero
+    $ pip install -e .
+    
+
 ## __str__ and __repr__
 
 You can see `__str__` as a method for users and `__repr__` as a method for developers.
