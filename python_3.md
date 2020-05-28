@@ -1,5 +1,14 @@
 # Python 3 notes
 
+## Dependencies on host computer
+
+For Ubuntu 18.04
+
+    $ sudo apt-get install gcc libpq-dev -y
+    $ sudo apt-get install python-dev  python-pip -y
+    $ sudo apt-get install python3-dev python3-pip python3-venv python3-wheel -y
+    $ pip3 install wheel
+
 ## Create environment
 
 Create an evironment inside root repository directory, e.g. `workspace/pyth9on/Chofero`
