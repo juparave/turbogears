@@ -36,6 +36,17 @@ file_name = '119136872_4470785782964095_7197786911271636876_n.jpg'
 obj = driver.upload_object(file_path, container, file_name)
 ```
 
+Get object's url
+
+    $ obj.get_cdn_url()
+    'http://04cf17f8f3374aa334ea-592b1ac9322c9b1b97aa36f03ced8aa2.r82.cf1.rackcdn.com/photos/119136872_4470785782964095_7197786911271636876_n.jpg'
+
+We will replace `http` with `https` to avoid security errors on browser
+
+    $ obj.get_cdn_url().replace('http', 'https')
+    'https://04cf17f8f3374aa334ea-592b1ac9322c9b1b97aa36f03ced8aa2.r82.cf1.rackcdn.com/photos/119136872_4470785782964095_7197786911271636876_n.jpg'
+    
+
 Adding optional extra values
 
 ```python
