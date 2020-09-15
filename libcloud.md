@@ -30,11 +30,13 @@ container = driver.get_container("test")
 
 ```python
 file_path = '/Users/pablito/Downloads/119136872_4470785782964095_7197786911271636876_n.jpg'
-file_name = '119136872_4470785782964095_7197786911271636876_n.jpg'
+file_name = '/photos/119136872_4470785782964095_7197786911271636876_n.jpg'
 
 # upload_object(file_path, container, object_name, extra=None, verify_hash=True, headers=None)
 obj = driver.upload_object(file_path, container, file_name)
 ```
+
+`file_name` notice path of the file to be stored.  That's to store the image file inside `photos` 
 
 Get object's url
 
