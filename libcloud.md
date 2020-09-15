@@ -18,5 +18,19 @@ username = "username"
 cls = libcloud.get_driver(libcloud.DriverType.STORAGE, libcloud.DriverType.STORAGE.CLOUDFILES)
 # all files are stored in the nearest location Dallas Forth Worth
 driver = cls(username, api_key, region='dfw')
-
+# create container
+container = driver.create_container("test")
+# if container already created, get the container
+container = driver.get_container("test")
 ```
+
+## Upload Object
+
+```python
+file_path = '/Users/pablito/Downloads/119136872_4470785782964095_7197786911271636876_n.jpg'
+file_name = '119136872_4470785782964095_7197786911271636876_n.jpg'
+
+# upload_object(file_path, container, object_name, extra=None, verify_hash=True, headers=None)
+obj = driver.upload_object(file_path, container, file_name)
+```
+
