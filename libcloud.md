@@ -40,13 +40,18 @@ obj = driver.upload_object(file_path, container, file_name)
 
 Get object's url
 
-    $ obj.get_cdn_url()
+    > obj.get_cdn_url()
     'http://04cf17f8f3374aa334ea-592b1ac9322c9b1b97aa36f03ced8aa2.r82.cf1.rackcdn.com/photos/119136872_4470785782964095_7197786911271636876_n.jpg'
 
-We will replace `http` with `https` to avoid security errors on browser
+By default the url returned is not secure, to access the container with HTTPS we must change the container's url.
 
-    $ obj.get_cdn_url().replace('http', 'https')
-    'https://04cf17f8f3374aa334ea-592b1ac9322c9b1b97aa36f03ced8aa2.r82.cf1.rackcdn.com/photos/119136872_4470785782964095_7197786911271636876_n.jpg'
+In the Cloud Control Panel, select **Storage > Files**, click the gear icon for the container, and select **View All Links**, which displays many links, copy the one for HTTPS.  ref: https://docs.rackspace.com/support/how-to/secure-cloud-files-and-cdn-urls/
+
+Replace the HTTP url with the HTTPS one.
+
+    > new_url = obj.get_cdn_url().replace(
+            'http://e797dfd60d8968c9ed7c-4679d77f23dfe1ec62b92a76e549443f.r3.cf1.rackcdn.com',
+            'https://f7b4430126a2f463f83f-4679d77f23dfe1ec62b92a76e549443f.ssl.cf1.rackcdn.com')
     
 
 Adding optional extra values
