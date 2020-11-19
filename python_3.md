@@ -66,3 +66,9 @@ class Notification(DeclarativeBase):
     def __str__(self):
         return '{}: {}'.format(self.title, self.content)
 ```
+
+## Troubleshooting
+
+### ImportError: cannot import name 'Feature' from 'setuptools'
+
+Update version of zope.interface to at least 5.1.0
