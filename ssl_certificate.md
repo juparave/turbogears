@@ -62,7 +62,7 @@ NOTE: Please do not enter your email address, challenge password or an optional 
 
 ## Use Certbot
 
-### For docker a deployment
+### For a docker deployment
 
 **from target account**
 
