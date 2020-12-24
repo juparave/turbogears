@@ -60,3 +60,33 @@ NOTE: Please do not enter your email address, challenge password or an optional 
 		}
 	}
 
+## Use Certbot
+
+### For docker a deployment
+
+**from target account**
+
+```bash
+docker exec -it target-run ash
+ apk add certbot certbot-nginx
+ certbot --nginx
+ exit
+ ```
+
+**from root on host**
+
+```bash
+cd /etc/ssl/target/
+
+cp ~target/incoming/stage.target.com/fullchain1.pem ~target/incoming/stage.target.com/privkey1.pem .
+
+rm fullchain.pem privkey.pem
+mv fullchain1.pem fullchain.pem
+mv privkey1.pem privkey.pem
+```
+
+**Run container as**
+
+```bash
+$ docker run -d -p 80:80 -p 443:443 --name target-run -v /etc/ssl/target:/etc/ssl/target --network target-net --restart unless-stopped target
+```
