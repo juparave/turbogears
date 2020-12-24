@@ -71,6 +71,8 @@ docker exec -it target-run ash
  apk add certbot certbot-nginx
  certbot --nginx
  exit
+cd ~/incoming
+docker cp target-run:/etc/letsencrypt/archive/stage.target.com .
  ```
 
 **from root on host**
