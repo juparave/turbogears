@@ -5,6 +5,7 @@
 * [Authorization](authorization.html)
 * [SSL Certificates](ssl_certificate.html)
 * [Python 3](python_3.html)
+* [Pillow on MacOS](pillow.html)
 
 ## PreMailer
 
